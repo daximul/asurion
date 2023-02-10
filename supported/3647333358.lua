@@ -1,6 +1,5 @@
 --[[
     @ evade - https://www.roblox.com/games/9872472334
-    # dax
 ]]
 
 return function(Container, Section, esp)

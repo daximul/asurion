@@ -447,7 +447,11 @@ function ESP:Chams(enabled)
                         end
                     end
                 end
-            until not chamsEnabled or not ESP.Enabled
+            until not ESP.Enabled or not chamsEnabled
+            if chamfolder then
+                chamfolder:Destroy()
+                chamfolder = nil
+            end
         end)
     else
         if chamfolder then

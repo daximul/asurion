@@ -20,7 +20,7 @@ return function(Container, Section, esp)
         if v.Name == ".powerboxes" then
             esp:AddObjectListener(v, {
                 Type = "Part",
-                Color = esp.Presets.Blue,,
+                Color = esp.Presets.Blue,
                 IsEnabled = "Powerboxes"
             })
         end

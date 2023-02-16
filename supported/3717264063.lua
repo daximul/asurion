@@ -16,5 +16,15 @@ return function(Container, Section, esp)
         end,
         IsEnabled = "Nextbots"
     })
+    for _, v in next, workspace:GetDescendants() do
+        if v.Name == ".powerboxes" then
+            esp:AddObjectListener(v, {
+                Type = "Part",
+                Color = esp.Presets.Blue,,
+                IsEnabled = "Powerboxes"
+            })
+        end
+    end
     Section:AddItem("Toggle", {Text = "Nextbots", Function = function(callback) esp.Nextbots = callback end})
+    Section:AddItem("Toggle", {Text = "Powerboxes", Function = function(callback) esp.Powerboxes = callback end})
 end

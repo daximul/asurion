@@ -17,9 +17,9 @@ return function(Container, Section, esp)
         IsEnabled = "Nextbots"
     })
     for _, v in next, workspace:GetDescendants() do
-        if v.Name == ".powerboxes" then
-            esp:AddObjectListener(v, {
-                Type = "Part",
+        if v.Parent.Name == ".powerboxes" and v.Name == "PowerBox" then
+            esp:Add(v, {
+                Name = "Powerbox",
                 Color = esp.Presets.Blue,
                 IsEnabled = "Powerboxes"
             })

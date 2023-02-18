@@ -94,12 +94,13 @@ function ESP:GetHealth(char)
 	return {Health = 0, MaxHealth = 0}
 end
 
-function ESP:GetName(player)
+function ESP:GetName(char)
 	local ov = self.Overrides.GetName
 	if ov then
-		return ov(player)
+		return ov(char)
 	end
-	return player.Name
+	local player = self:GetPlrFromChar(char)
+	return (player and player.Name) or "Invalid Name"
 end
 
 function ESP:Toggle(bool)
@@ -253,7 +254,7 @@ function boxBase:Update()
             self.Components.Name.Position = Vector2(TagPos.X, TagPos.Y)
             if ESP.Health and self.Player and self.Player.Character then
                 local Humanoid = ESP:GetHealth(self.Player.Character)
-                local NewName = ESP:GetName(self.Player)
+                local NewName = ESP:GetName(self.Player.Character)
                 self.Components.Name.Text = NewName .. format(" [%s/%s]", floor(Humanoid.Health), floor(Humanoid.MaxHealth))
             else
                 self.Components.Name.Text = NewName

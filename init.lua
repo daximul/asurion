@@ -25,7 +25,9 @@ local ESP = {
 		Blue = fromRGB(0, 145, 255),
 		White = fromRGB(255, 255, 255),
 		Pink = fromRGB(255, 0, 255),
-		Gray = fromRGB(160, 160, 160)
+		Gray = fromRGB(160, 160, 160),
+		Yellow = fromRGB(255, 255, 102),
+		Purple = fromRGB(102, 0, 204)
 	},
 	IgnoreHumanoids = false,
 	Objects = setmetatable({}, {__mode = "kv"}),

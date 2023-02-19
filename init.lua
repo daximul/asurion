@@ -32,10 +32,11 @@ local ESP = {
 	Overrides = {}
 }
 
-local cloneref = cloneref or function(...) return ... end
+local clonerefs = cloneref or function(...) return ... end
 local cam = workspace.CurrentCamera
-local plrs = cloneref(game:GetService("Players"))
-local runserv = cloneref(game:GetService("RunService"))
+local plrs = clonerefs(game:GetService("Players"))
+local runserv = clonerefs(game:GetService("RunService"))
+local CoreGui = clonerefs(game:GetService("CoreGui"))
 local plr = plrs.LocalPlayer
 local WorldToViewportPoint = cam.WorldToViewportPoint
 
@@ -428,7 +429,6 @@ function ESP:DefaultSetup(color)
     ESP.Color = ESP.Presets[tostring(color)] or color or ESP.Presets.White
 end
 
-local CoreGui = cloneref(game:GetService("CoreGui"))
 local chamfolder = nil
 local chamsEnabled = false
 function ESP:Chams(enabled)

@@ -4,32 +4,32 @@ local format, floor, wrap, newCFrame = string.format, math.floor, coroutine.wrap
 local Vector2, Vector3, newDrawing, fromRGB = Vector2.new, Vector3.new, Drawing.new, Color3.fromRGB
 
 local ESP = {
-    Enabled = false,
-    Distance = true,
-    Boxes = true,
-    BoxShift = newCFrame(0, -1.5, 0),
-    BoxSize = Vector3(4, 6, 0),
-    Color = fromRGB(255, 255, 255),
-    FaceCamera = false,
-    Names = true,
-    TeamColor = true,
-    Thickness = 2,
-    AttachShift = 1,
-    TeamMates = true,
-    Players = true,
-    Health = false,
-    Presets = {
-        Green = fromRGB(0, 255, 154),
-        Red = fromRGB(255, 0, 128),
-        Orange = fromRGB(255, 162, 0),
-        Blue = fromRGB(0, 145, 255),
-        White = fromRGB(255, 255, 255),
-        Pink = fromRGB(255, 0, 255)
-    },
-    IgnoreHumanoids = false,
-    Objects = setmetatable({}, {__mode = "kv"}),
-    Debug = false,
-    Overrides = {}
+	Enabled = false,
+	Distance = true,
+	Boxes = true,
+	BoxShift = newCFrame(0, -1.5, 0),
+	BoxSize = Vector3(4, 6, 0),
+	Color = fromRGB(255, 255, 255),
+	FaceCamera = false,
+	Names = true,
+	TeamColor = true,
+	Thickness = 2,
+	AttachShift = 1,
+	TeamMates = true,
+	Players = true,
+	Health = false,
+	Presets = {
+		Green = fromRGB(0, 255, 154),
+		Red = fromRGB(255, 0, 128),
+		Orange = fromRGB(255, 162, 0),
+		Blue = fromRGB(0, 145, 255),
+		White = fromRGB(255, 255, 255),
+		Pink = fromRGB(255, 0, 255)
+	},
+	IgnoreHumanoids = false,
+	Objects = setmetatable({}, {__mode = "kv"}),
+	Debug = false,
+	Overrides = {}
 }
 
 local cloneref = cloneref or function(...) return ... end
@@ -39,13 +39,12 @@ local runserv = cloneref(game:GetService("RunService"))
 local plr = plrs.LocalPlayer
 local WorldToViewportPoint = cam.WorldToViewportPoint
 
-local function Draw(obj, props)
-	local new = newDrawing(obj)
-	props = props or {}
-	for i, v in pairs(props) do
-		new[i] = v
+local Draw = function(object, properties)
+	object = newDrawing(object)
+	for property, value in pairs(properties or {}) do
+		object[property] = value
 	end
-	return new
+	return object
 end
 
 function ESP:GetTeam(p)

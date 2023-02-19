@@ -47,59 +47,59 @@ local Draw = function(object, properties)
 	return object
 end
 
-function ESP:GetTeam(p)
-	local ov = self.Overrides.GetTeam
-	if ov then
-		return ov(p)
-	end
-	return p and p.Team
+function ESP:GetTeam(player)
+    local override = self.Overrides.GetTeam
+    if override then
+        return override(player)
+    end
+    return player and player.Team
 end
 
-function ESP:IsTeamMate(p)
-    local ov = self.Overrides.IsTeamMate
-	if ov then
-		return ov(p)
+function ESP:IsTeamMate(player)
+    local override = self.Overrides.IsTeamMate
+    if override then
+        return override(player)
     end
-    return self:GetTeam(p) == self:GetTeam(plr)
+    return self:GetTeam(player) == self:GetTeam(plr)
 end
 
 function ESP:GetColor(obj)
-	local ov = self.Overrides.GetColor
-	if ov then
-		return ov(obj)
+    local override = self.Overrides.GetColor
+    if override then
+        return override(obj)
     end
-    local p = self:GetPlrFromChar(obj)
-    return p and self.TeamColor and p.Team and p.Team.TeamColor.Color or self.Color
+    local player = self:GetPlrFromChar(obj)
+    return player and self.TeamColor and player.Team and player.Team.TeamColor.Color or self.Color
 end
 
-function ESP:GetPlrFromChar(char)
-	local ov = self.Overrides.GetPlrFromChar
-	if ov then
-		return ov(char)
-	end
-	return plrs:GetPlayerFromCharacter(char)
+function ESP:GetPlrFromChar(character)
+    local override = self.Overrides.GetPlrFromChar
+    if override then
+        return override(character)
+    end
+    return plrs:GetPlayerFromCharacter(character)
 end
 
-function ESP:GetHealth(char)
-	local ov = self.Overrides.GetHealth
-	if ov then
-		return ov(char)
-	end
-	local player = self:GetPlrFromChar(char)
-	local humanoid = player and player.Character and (player.Character:FindFirstChildWhichIsA("Humanoid") or player.Character:FindFirstChild("Humanoid"))
-	if humanoid then
-		return {Health = humanoid.Health, MaxHealth = humanoid.MaxHealth}
-	end
-	return {Health = 0, MaxHealth = 0}
+function ESP:GetHealth(character)
+    local override = self.Overrides.GetHealth
+    if override then
+        return override(character)
+    end
+    local player = self:GetPlrFromChar(character)
+    local humanoid = player and player.Character and (player.Character:FindFirstChildWhichIsA("Humanoid") or player.Character:FindFirstChild("Humanoid"))
+    if humanoid then
+        return {Health = humanoid.Health, MaxHealth = humanoid.MaxHealth}
+    end
+    return {Health = 0, MaxHealth = 0}
 end
 
-function ESP:GetName(char)
-	local ov = self.Overrides.GetName
-	if ov then
-		return ov(char)
-	end
-	local player = self:GetPlrFromChar(char)
-	return (player and player.Name) or "Invalid Name"
+function ESP:GetName(character)
+    local override = self.Overrides.GetName
+    if override then
+        return override(character)
+    end
+    local player = self:GetPlrFromChar(character)
+    return (player and player.Name) or "Invalid Name"
 end
 
 function ESP:Toggle(bool)

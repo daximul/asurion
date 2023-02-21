@@ -464,9 +464,9 @@ function ESP:Chams(enabled)
                             hitbox.Name = v.Name
                             hitbox.Parent = chamfolder
                             hitbox.Adornee = char
-                            hitbox.OutlineColor = v.TeamColor.Color
+                            hitbox.OutlineColor = (ESP.TeamColor and v.TeamColor.Color) or ESP.Color
                             hitbox.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                            hitbox.FillColor = v.TeamColor.Color
+                            hitbox.FillColor = (ESP.TeamColor and v.TeamColor.Color) or ESP.Color
                             hitbox.FillTransparency = 0.5
                             hitbox.Enabled = allow
                         end

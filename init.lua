@@ -459,6 +459,8 @@ function ESP:Chams(enabled)
                         local char = v.Character
                         if chamfolder ~= nil and char ~= nil then
                             local hitbox = chamfolder:FindFirstChild(v.Name) or Instance.new("Highlight")
+                            local allow = true
+                            if not ESP.TeamMates and ESP:IsTeamMate(v) then allow = false end
                             hitbox.Name = v.Name
                             hitbox.Parent = chamfolder
                             hitbox.Adornee = char
@@ -466,6 +468,7 @@ function ESP:Chams(enabled)
                             hitbox.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
                             hitbox.FillColor = v.TeamColor.Color
                             hitbox.FillTransparency = 0.5
+                            hitbox.Enabled = allow
                         end
                     end
                 end

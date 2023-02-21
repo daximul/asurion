@@ -260,7 +260,6 @@ function boxBase:Update()
 
     if ESP.Names then
         local TagPos, Vis5 = WorldToViewportPoint(cam, locs.TagPos.p)
-
         if Vis5 then
             self.Components.Name.Visible = true
             self.Components.Name.Position = Vector2(TagPos.X, TagPos.Y)
@@ -271,28 +270,30 @@ function boxBase:Update()
                 self.Components.Name.Text = NewName
             end
             self.Components.Name.Color = color
-
-            if ESP.Distance then
-                self.Components.Distance.Visible = true
-                self.Components.Distance.Position = Vector2(TagPos.X, TagPos.Y + 14)
-                self.Components.Distance.Text = floor((cam.CFrame.p - cf.p).magnitude) .. "m away"
-                self.Components.Distance.Color = color
-            else
-                self.Components.Distance.Visible = false
-            end
         else
             self.Components.Name.Visible = false
-            self.Components.Distance.Visible = false
         end
     else
         self.Components.Name.Visible = false
+    end
+
+    if ESP.Distance then
+        local TagPos, Vis6 = WorldToViewportPoint(cam, locs.TagPos.p)
+        if Vis6 then
+            self.Components.Distance.Visible = true
+            self.Components.Distance.Position = Vector2(TagPos.X, TagPos.Y + 14)
+            self.Components.Distance.Text = floor((cam.CFrame.p - cf.p).magnitude) .. "m away"
+            self.Components.Distance.Color = color
+        else
+            self.Components.Distance.Visible = false
+        end
+    else
         self.Components.Distance.Visible = false
     end
 
     if ESP.Tracers then
-        local TorsoPos, Vis6 = WorldToViewportPoint(cam, locs.Torso.p)
-
-        if Vis6 then
+        local TorsoPos, Vis7 = WorldToViewportPoint(cam, locs.Torso.p)
+        if Vis7 then
             self.Components.Tracer.Visible = true
             self.Components.Tracer.From = Vector2(TorsoPos.X, TorsoPos.Y)
             self.Components.Tracer.To = Vector2(cam.ViewportSize.X/2,cam.ViewportSize.Y/ESP.AttachShift)

@@ -3,6 +3,7 @@
 ]]
 
 return function(Container, Section, esp)
+    print(filter)
     esp:AddObjectListener(workspace.bots, {
         Type = "Model",
         Recursive = true,

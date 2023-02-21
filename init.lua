@@ -108,7 +108,7 @@ function ESP:GetName(character)
         return override(character)
     end
     local player = self:GetPlrFromChar(character)
-    return (player and GetLongUsername(player.Name)) or "Invalid Name"
+    return (player and GetLongUsername(player)) or "Invalid Name"
 end
 
 function ESP:Toggle(bool)

@@ -98,13 +98,17 @@ function ESP:GetHealth(character)
     return {Health = 0, MaxHealth = 0}
 end
 
+local GetLongUsername = function(player)
+	return player.DisplayName and format("%s (%s)", player.Name, player.DisplayName) or player.Name
+end
+
 function ESP:GetName(character)
     local override = self.Overrides.GetName
     if override then
         return override(character)
     end
     local player = self:GetPlrFromChar(character)
-    return (player and player.Name) or "Invalid Name"
+    return (player and GetLongUsername(player.Name)) or "Invalid Name"
 end
 
 function ESP:Toggle(bool)

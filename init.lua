@@ -256,9 +256,8 @@ function boxBase:Update()
         if Vis5 then
             self.Components.Name.Visible = true
             self.Components.Name.Position = Vector2(TagPos.X, TagPos.Y)
-            if ESP.Health and self.Player and self.Player.Character then
-                local Humanoid = ESP:GetHealth(self.Player.Character)
-                local NewName = ESP:GetName(self.Player.Character)
+            local Humanoid, NewName = ESP:GetHealth(self.Player.Character), ESP:GetName(self.Player.Character)
+            if ESP.Health then
                 self.Components.Name.Text = NewName .. format(" [%s/%s]", floor(Humanoid.Health), floor(Humanoid.MaxHealth))
             else
                 self.Components.Name.Text = NewName

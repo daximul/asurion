@@ -466,6 +466,7 @@ function ESP:Chams(enabled)
                             hitbox.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
                             hitbox.FillColor = v.TeamColor.Color
                             hitbox.FillTransparency = 0.5
+                            hitbox.Enabled = (not ESP.TeamMates and ESP:IsTeamMate(player) and false) or true
                         end
                     end
                 end

@@ -99,7 +99,11 @@ function ESP:GetHealth(character)
 end
 
 local GetLongUsername = function(player)
-	return player.DisplayName and format("%s (%s)", player.Name, player.DisplayName) or player.Name
+	if player.DisplayName ~= player.Name then
+		return format("%s (%s)", player.Name, player.DisplayName)
+	else
+		return player.Name
+	end
 end
 
 function ESP:GetName(character)

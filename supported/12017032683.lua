@@ -6,10 +6,10 @@ return function(Container, Section, esp)
     esp:AddObjectListener(workspace, {
         Type = "Model",
         PrimaryPart = "HumanoidRootPart",
-        CustomName = function(obj) return obj.Name end,
+        CustomName = function(obj) return gsub(obj.Name, "SCP-", "") end,
         Color = esp.Presets.Red,
-        Validator = function(obj) return obj:FindFirstChild("AI Chase") and obj.Name == "SCP-096" end,
-        IsEnabled = "ZeroNineSix"
+        Validator = function(obj) return obj:FindFirstChild("AI Chase") end,
+        IsEnabled = "SCPs"
     })
-    Section:AddItem("Toggle", {Text = "096", Function = function(callback) esp.ZeroNineSix = callback end})
+    Section:AddItem("Toggle", {Text = "SCPs", Function = function(callback) esp.SCPs = callback end})
 end

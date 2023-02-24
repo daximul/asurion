@@ -6,7 +6,7 @@ return function(Container, Section, esp)
     esp:AddObjectListener(workspace, {
         Type = "Model",
         PrimaryPart = "HumanoidRootPart",
-        CustomName = function(obj) return gsub(obj.Name, "SCP-", "") end,
+        CustomName = function(obj) return gsub(tostring(obj.Name), "SCP-", "") end,
         Color = esp.Presets.Red,
         Validator = function(obj) return obj:FindFirstChild("AI Chase") end,
         IsEnabled = "SCPs"

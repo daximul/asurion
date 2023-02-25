@@ -23,6 +23,7 @@ local ESP = {
 		Red = fromRGB(255, 0, 128),
 		Orange = fromRGB(255, 162, 0),
 		Blue = fromRGB(0, 145, 255),
+		MediumBlue = fromRGB(110, 153, 202),
 		White = fromRGB(255, 255, 255),
 		Black = fromRGB(0, 0, 0),
 		Pink = fromRGB(255, 0, 255),

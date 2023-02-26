@@ -308,9 +308,7 @@ function ESP:Add(obj, options)
         RenderInNil = options.RenderInNil
     }, boxBase)
 
-    if self:GetBox(obj) then
-        self:GetBox(obj):Remove()
-    end
+    if self:GetBox(obj) then self:GetBox(obj):Remove() end
 
     box.Components["Quad"] = Draw("Quad", {
         Thickness = self.Thickness,

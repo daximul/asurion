@@ -37,5 +37,5 @@ return function(Container, Section, esp)
     end
     Section:AddItem("Toggle", {Text = "Nextbots", Function = function(callback) esp.Nextbots = callback end})
     Section:AddItem("Toggle", {Text = "Downed", Function = function(callback) esp.Downed = callback end})
-    Section:AddItem("Toggle", {Text = "Tickets", Function = function(callback) esp.Tickets = callback end})
+    if update ~= "" then Section:AddItem("Toggle", {Text = "Tickets", Function = function(callback) esp.Tickets = callback end}) end
 end

@@ -207,7 +207,7 @@ function boxBase:Update()
 
     if ESP.Highlighted == self.Object then color = ESP.HighlightColor end
 
-    local cf = (ESP.FaceCamera and newCFrame(self.PrimaryPart.CFrame.p, cam.CFrame.p))) or self.PrimaryPart.CFrame
+    local cf = (ESP.FaceCamera and newCFrame(self.PrimaryPart.CFrame.p, cam.CFrame.p)) or self.PrimaryPart.CFrame
     local size = self.Size
     local locs = {
         TopLeft = cf * ESP.BoxShift * newCFrame(size.X / 2, size.Y / 2, 0),

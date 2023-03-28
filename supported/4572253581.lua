@@ -16,7 +16,7 @@ return function(Container, Section, esp)
     end
     esp.Overrides.GetName = function(character)
         local player = esp:GetPlrFromChar(character)
-        return (player and player.Status.FakeName.Value) or "Invalid Name"
+        return player and player.Status.FakeName.Value or "Invalid Name"
     end
     Section:AddItem("Toggle", {Text = "Roles", Function = function(callback) esp.Roles = callback end})
 end

@@ -3,14 +3,13 @@
 ]]
 
 return function(Container, Section, esp)
-    esp.Overrides.GetColor = function(character)
-        local player = esp:GetPlrFromChar(character)
-        if player and esp.Killers then
-            if player.Character:FindFirstChild("Weapon") then
-                return esp.Presets.Red
-            end
-        end
-        return esp.Presets.White
-    end
+    esp:AddObjectListener(workspace, {
+        Name = "Weapon",
+        Recursive = true,
+        CustomName = "Killer",
+        Color = esp.Presets.Red,
+        PrimaryPart = function(obj) return obj.Parent.HumanoidRootPart end,
+        IsEnabled = "Killers"
+    })
     Section:AddItem("Toggle", {Text = "Killers", Function = function(callback) esp.Killers = callback end})
 end
